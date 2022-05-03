@@ -1,4 +1,5 @@
 pipeline{
+  agent {label 'linux'}
   environment {
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
