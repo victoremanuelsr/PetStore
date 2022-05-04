@@ -23,5 +23,4 @@ test {
 
 war {
     archiveBaseName = 'PetStore'
-    archiveVersion =  '0.1'
 }
