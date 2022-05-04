@@ -1,9 +1,14 @@
 pipeline{
-  agent {label 'linux'}
+  agent any
   environment {
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
   stages{
+    stage('Preparation'){
+      steps{
+        git 'https://github.com/victoremanuelsr/PetStore.git/'
+      }
+    }
     stage('Test'){
       steps{
         sh './gradlew test'
@@ -15,14 +20,9 @@ pipeline{
       }
     }
     stage('Publish Artifactory'){
-      agent {
-        docker {
-          image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2-jf'
-          reuseNode true
-        }
-      }
       steps{
-        sh 'jfrog rt upload --url https://victoremanuelsr.jfrog.io/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/PetStore.war petstore/'
+        sh '/usr/local/bin/jf rt upload --url https://victoremanuelsr.jfrog.io/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} *.war petstore/'
+        
       }
     }
   }
