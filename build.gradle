@@ -3,6 +3,8 @@ plugins {
     id 'war'
 }
 
+
+
 repositories {
     mavenCentral()
 }
@@ -17,4 +19,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+war {
+    archiveBaseName = 'PetStore'
+    archiveVersion =  '0.1'
 }

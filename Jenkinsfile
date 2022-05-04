@@ -4,11 +4,6 @@ pipeline{
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
   stages{
-    stage('Preparation'){
-      steps{
-        git 'https://github.com/victoremanuelsr/PetStore.git/'
-      }
-    }
     stage('Test'){
       steps{
         sh './gradlew test'
