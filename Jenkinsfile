@@ -17,7 +17,6 @@ pipeline{
     stage('Publish Artifactory'){
       steps{
         sh '/usr/local/bin/jf rt upload --url https://victoremanuelsr.jfrog.io/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} *.war petstore/'
-        
       }
     }
   }

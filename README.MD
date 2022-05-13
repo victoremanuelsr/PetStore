@@ -1,11 +1,9 @@
-# Tema 06: PetStore - Docker 
+# PetStore  
 ## Steps to run the application:
-### 1º - Build the project. 
-### 2º -  Build docker image file
-`docker image build -t your-name/image-name ./`
-### 3º - Creating and running a container
-`docker container run -it --publish 8080:8080 your-name/image-name`
-
+### 1º - Pull docker image. 
+`docker pull victoremanuelsr/petstore:petstore`
+### 2º - Creating and running a container
+`docker run --name peststore -p 8080:8080 -d victoremanuelsr/petstore:petstore`
 
 ##  Available services:
 
